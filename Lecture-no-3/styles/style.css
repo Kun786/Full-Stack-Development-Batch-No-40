@@ -1,0 +1,60 @@
+body{
+    background-color: aqua;
+}
+
+.one{
+    background-color: brown;
+    color: whitesmoke;
+    width: 50%;
+    margin-bottom: 5px;
+    padding: 50px;
+    font-size: 500px;
+}
+
+.two{
+    background-color:black;
+    color: whitesmoke;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+.three{
+    background-color: red;
+    color: whitesmoke;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+.four{
+    background-color: green;
+    color: whitesmoke;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+.five{
+    background-color:chocolate;
+    color: whitesmoke;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+.six{
+    background-color:darkorchid;
+    color: whitesmoke;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+li{
+    display: inline;
+    margin-left:400px ;
+    border: 1px solid black;
+    padding: 10px 50px;
+    border-radius: 5px;
+}
+
+li:hover{
+    background-color: black;
+    color: whitesmoke;
+}
