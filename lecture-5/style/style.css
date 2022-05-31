@@ -1,0 +1,42 @@
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    height: 100vh;
+    background-color: black;
+}
+
+body{
+    background-color: black;
+}
+.child1{
+ background-color: red;
+ height: 400px;
+ width: 400px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.child2{
+    background-color: rgb(0, 234, 255);
+    height: 400px;
+    width: 400px;
+}
+
+.child3{
+    background-color: rgb(166, 255, 0);
+    height: 400px;
+    width: 400px;
+}
+
+ul{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+}
+li{
+    background-color: aliceblue;
+    padding: 50px;
+}
