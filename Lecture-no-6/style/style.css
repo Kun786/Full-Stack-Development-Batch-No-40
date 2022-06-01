@@ -1,0 +1,23 @@
+nav{
+    display: flex;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 8px;
+    margin-right: 50px;
+}
+
+.logo{
+    width: 100%;
+    margin-left: 50px;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
