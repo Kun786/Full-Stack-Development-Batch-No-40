@@ -49,3 +49,14 @@
 
 
 
+let MeraTable = (Upper, Lower) => {
+    for(
+        let a=100;
+        a>=Lower;
+        a--){
+            console.log(`${Lower} - ${a} = ${Upper-a}`);
+        }
+        
+}
+
+MeraTable(10,1);
