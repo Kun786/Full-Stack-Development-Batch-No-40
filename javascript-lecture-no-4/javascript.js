@@ -71,3 +71,11 @@ let CreateList = () => {
         alert(error.message)
     }
 }
+
+// console.log(x)
+// let x =10;
+
+AddNumbers();
+let AddNumbers = ()=>{
+    console.log(9)
+}
