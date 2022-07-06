@@ -7,7 +7,8 @@ let GetInputValue = () => {
         let RadioBoxValue = document.querySelector('.HelloCheckBox:checked').value;
         let CheckBoxValue = document.querySelector('.Check1').value;
         let DateValue =  document.querySelector('.MyDate').value;
-        console.log(DateValue);
+        let MyButton = document.querySelector('.MyButton').value;
+        console.log(MyButton);
         if(MyInputValue === 'yes'){
 
             MyInputField.style.border = "1px solid green";
@@ -43,8 +44,19 @@ let GetSeveValue = () => {
 let Calc = () =>{
     try {
         let SevenValue = parseInt(document.querySelector('.seven').dataset.seven);
-        
+
     } catch (error) {
         
+    }
+}
+
+
+
+let GetMyButtonValue = () => {
+    try {
+        let MyButton = document.querySelector('.MyButton').value;
+        console.log(MyButton);
+    } catch (error) {
+        alert(error.message);
     }
 }
