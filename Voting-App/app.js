@@ -2,7 +2,7 @@
 let CreateCard = () => {
   try {
     let CardArray = [];
-    let LocalStorageData = JSON.parse(localStorage.getItem('card-data'));
+    let LocalStorageData = JSON.parse(localStorage.getItem('card-data'));//Main check karon k wo empty hai k nahi
     let Name = document.querySelector('.Name').value;
     let ImageUrl = document.querySelector('.ImageUrl').value;
     let CardContainer = document.querySelector('.CardContainer');
@@ -12,6 +12,7 @@ let CreateCard = () => {
     CardObject.Id = Math.floor(Math.random() * 1000);
     CardObject.Points = 0;
 
+    //Agar Reload Hoo Jae
     if (CardObject.Name === '' || CardObject.ImageUrl === '') {
       let TemporaryLocalStorage = JSON.parse(localStorage.getItem('card-data'));
       TemporaryLocalStorage.forEach(element => {
@@ -31,16 +32,16 @@ let CreateCard = () => {
     }
 
     if (LocalStorageData === null || LocalStorageData.length === 0) {
-      CardArray = [];
+      // CardArray = [];
       CardArray.push(CardObject);
       localStorage.setItem('card-data', JSON.stringify(CardArray));
       CardContainer.innerHTML = `
     <div class="col mx-3 my-3">
           <div class="card" style="width: 18rem;">
-          <img src="${element.ImageUrl}" class="card-img-top" alt="...">
+          <img src="${CardArray.ImageUrl}" class="card-img-top" alt="...">
           <div class="card-body">
-            <p>Name: ${element.Name}</p>
-            <p>Points: ${element.Points}</p>
+            <p>Name: ${CardArray.Name}</p>
+            <p>Points: ${CardArray.Points}</p>
           </div>
               </div>
           </div>
@@ -49,7 +50,7 @@ let CreateCard = () => {
     }
 
     if (LocalStorageData.length !== 0) {
-      CardArray = [];
+      // CardArray = [];
       LocalStorageData.forEach(element => {
         CardArray.push(element);
       });

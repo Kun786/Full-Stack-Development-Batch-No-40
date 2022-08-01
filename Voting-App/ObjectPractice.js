@@ -24,3 +24,5 @@ let Student2 = new Student('Ahmed');
 console.log(Student1.CallMyName());
 
 
+localStorage.setItem('dachi',JSON.stringify(data))
+JSON.parse(localStorage.getItem('dachi'))
