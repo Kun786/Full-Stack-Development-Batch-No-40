@@ -77,3 +77,5 @@ let CreateCard = () => {
     console.log(error);
   }
 }
+
+// A = 95
