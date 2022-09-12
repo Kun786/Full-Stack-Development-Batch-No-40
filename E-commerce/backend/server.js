@@ -6,7 +6,6 @@ const LoadMyEnviormentVariables = require('./configuration/LoadMyEnviormentVaria
 const DatabaseConfiguration = require('./configuration/DatabaseConfiguration');
 //Block End Dependencies
 
-
 // //Block Start Initialize the app and Creating app mete-data
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +20,6 @@ const PORT = process.env.PORT || 9090;
 
 // //Start Block Setting th Headers for your Application
 app.all('*', (req, res, next) => {
-    console.log(req.body);
     // This is how we protect the api
     res.header('Access-Control-Allow-Origin', '*');// So it make the header allow to the origin when cross platfrom try to exchange the data
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -29,7 +27,8 @@ app.all('*', (req, res, next) => {
         res.header('Access-Control-Allow-Methods', 'PUT,POST,PATCH,DELETE,GET');
         //Mehtod is a property which help us to use the Methods by request. Browers send the options request before your Mthods request
     }
-    next(); //if nothing of the response sent back so next() means other rou
+    next();
+     //if nothing of the response sent back so next() means other rou
 });
 // //End Block Setting the Header for your Application
 
@@ -37,11 +36,13 @@ app.all('*', (req, res, next) => {
 // //Start Block Accessing The Routes in the Entry Point
 
 const _AdminManagementRoute = require('./routes/AdminManagementRoute');
+const _UserManagementRoute = require('./routes/UserManagementRoute');
 // const _AdminManagementRoute = require('./routes/AdminManagementRoute');
 // const _PaymentManagement = require('./routes/PaymentManagementRoute');
 
 // //*****UsingRoutes*****//
 app.use('/AdminManagement', _AdminManagementRoute);
+app.use('/UserManagement',_UserManagementRoute)
 // app.use('/AdminManagement', _AdminManagementRoute);
 // app.use('/PaymentManagement',_PaymentManagement);
 // //*****UsingRoutes*****//
