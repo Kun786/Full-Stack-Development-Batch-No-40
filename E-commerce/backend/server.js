@@ -75,3 +75,25 @@ app.use((error, req, res, next) => {
 app.listen(PORT, () => {
     console.log(`You Application has Launched from the Port 🚀 🚀 ${PORT}`);
 })
+
+
+
+
+
+function resolveLater() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('finish');
+      }, 2000);
+    });
+  }
+  
+  async function asyncCall() {
+    console.log('let');
+    var result = await resolveLater();
+    console.log(result);
+    // expected output: "resolved"
+  }
+  console.log("I'ma")
+  asyncCall();
+  console.log("you")
