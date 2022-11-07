@@ -25,7 +25,6 @@ const ProductData = async (req, res) => {
             Data:true
         })
     } catch (error) {
-        console.log(error)
         res.json({
             Message: error.mesage,
             Result: null,
@@ -36,15 +35,16 @@ const ProductData = async (req, res) => {
 
 const GetProductData = async (req, res) => {
     try {
-        const DocToGet = await ProductModel.findOne(
-            { Status: 0 }, //Condition
-            { ProductPrice: 0 } //Projecttion
-            //Options
-        );
+        // const DocToGet = await ProductModel.findOne(
+        //     { Status: 0 }, //Condition
+        //     { ProductPrice: 0 } //Projecttion
+        //     //Options
+        // );
+        const docToGet = await ProductModel.find();
         res.json({
-            Message: 'Documents has Found',
+            Message: 'All Documents Found',
             Data: true,
-            Result: DocToGet
+            Result: docToGet
         })
     } catch (error) {
         res.json({
