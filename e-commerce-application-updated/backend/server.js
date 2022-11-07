@@ -42,7 +42,7 @@ const _PaymentManagement = require('./routes/PaymentManagementRoute');
 //*****UsingRoutes*****//
 app.use('/ProductManagement', _ProductManagementRoute);
 app.use('/AdminManagement', _AdminManagementRoute);
-app.use('/PaymentManagement',_PaymentManagement);
+app.use('/PaymentManagement', _PaymentManagement);
 //*****UsingRoutes*****//
 
 

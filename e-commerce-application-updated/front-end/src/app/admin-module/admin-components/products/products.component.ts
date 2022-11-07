@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, FormArray, CheckboxControlValueAccessor } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/Shared/Services/product.service';
 
@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/Shared/Services/product.service';
 
 export class ProductsComponent implements OnInit {
   @ViewChild('FileSelect') FileSelect: ElementRef | any;
-  
+
 
   color = ["Red", "Black", "Blue"];
   categories = ["Cap", "Hoodies", "Watch", "Bags"];
@@ -22,26 +22,26 @@ export class ProductsComponent implements OnInit {
   myProductForm: FormGroup | any
   constructor(
     private formBuilder: FormBuilder,
-    private ToastrService:ToastrService,
-    private ProductService:ProductService
+    private ToastrService: ToastrService,
+    private ProductService: ProductService
   ) { this.buildForm() }
 
   ngOnInit(): void {
-    let MyArray = [1,2,3,4,5];
-//    const [...newArray] = MyArray;
+    let MyArray = [1, 2, 3, 4, 5];
+    //    const [...newArray] = MyArray;
 
 
-//   let ObjectOne = {
-//     name:'asdasd',
-//     age:10
-//   }
-// let ObjectTwo = {
-//   hair:"jaksdkaskj",
-//   class:16
-// }
+    //   let ObjectOne = {
+    //     name:'asdasd',
+    //     age:10
+    //   }
+    // let ObjectTwo = {
+    //   hair:"jaksdkaskj",
+    //   class:16
+    // }
 
-// let jointValue  = {...ObjectOne, ...ObjectTwo}
-//   jointValue
+    // let jointValue  = {...ObjectOne, ...ObjectTwo}
+    //   jointValue
   }
 
   buildForm() {
@@ -54,7 +54,7 @@ export class ProductsComponent implements OnInit {
       companyName: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]),
       category: new FormControl('', Validators.required),
       size: new FormArray([]),
-      productMaterial: new FormControl('', Validators.required)
+      productMaterial: new FormControl('', Validators.required),
     })
   }
 
@@ -68,14 +68,15 @@ export class ProductsComponent implements OnInit {
   }
 
   getImages(event: any) {
+    let filesLength = event.target.files.length;
     if (event.target.files.length <= 5) {
-      [... event.target.files].forEach(file => this.imageArray.push(file));
+      [...event.target.files].forEach(file => this.imageArray.push(file));
       this.imageArray;
     } else {
       this.imageArray = [];
-      this.FileSelect.nativeElement.value= null;
+      this.FileSelect.nativeElement.value = null;
       this.disableButtonTrue = true;
-      this.ToastrService.warning(`Image selection limit is 5 but you have selected ${event.target.files.length}`);
+      this.ToastrService.warning(`Image selection limit is 5 but you have selected ${filesLength}`);
     }
   }
 
@@ -89,29 +90,31 @@ export class ProductsComponent implements OnInit {
     //   let formControl = new FormControl(element)
     //   this.myProductForm.get("image").push(formControl)
     // })
-    
-    let MultiPartFormData = new FormData();
-    MultiPartFormData.append('productName',this.myProductForm.get('productName').value);
-    MultiPartFormData.append('quantity',this.myProductForm.get('quantity').value);
-    MultiPartFormData.append('price',this.myProductForm.get('price').value);
-    MultiPartFormData.append('description',this.myProductForm.get('description').value);
-    MultiPartFormData.append('color',this.myProductForm.get('color').value);
-    MultiPartFormData.append('companyName',this.myProductForm.get('companyName').value);
-    MultiPartFormData.append('category',this.myProductForm.get('category').value);
-    MultiPartFormData.append('size',this.myProductForm.get('size').value);
-    MultiPartFormData.append('productMaterial',this.myProductForm.get('productMaterial').value);
-    // MultiPartFormData.append('image',this.myProductForm.get('image').value);
-    this.imageArray.forEach((ImagesData:any)=>{
-      MultiPartFormData.append('images',ImagesData);//Appending values to the getData varibale from FormGroup
-    })
-    
-    
-   
 
-    this.ProductService.CreateProductCard(MultiPartFormData).subscribe((ResponseComingFromBackend:any) => {
-      console.log(ResponseComingFromBackend);
+    let MultiPartFormData = new FormData();
+    MultiPartFormData.append('productName', this.myProductForm.get('productName').value);
+    MultiPartFormData.append('quantity', this.myProductForm.get('quantity').value);
+    MultiPartFormData.append('price', this.myProductForm.get('price').value);
+    MultiPartFormData.append('description', this.myProductForm.get('description').value);
+    MultiPartFormData.append('color', this.myProductForm.get('color').value);
+    MultiPartFormData.append('companyName', this.myProductForm.get('companyName').value);
+    MultiPartFormData.append('category', this.myProductForm.get('category').value);
+    MultiPartFormData.append('size', this.myProductForm.get('size').value);
+    MultiPartFormData.append('productMaterial', this.myProductForm.get('productMaterial').value);
+    // MultiPartFormData.append('image',this.myProductForm.get('image').value);
+    this.imageArray.forEach((ImagesData: any) => {
+      MultiPartFormData.append('images', ImagesData);//Appending values to the getData varibale from FormGroup
+    })
+
+    this.ProductService.CreateProductCard(MultiPartFormData).subscribe((ResponseComingFromBackend: any) => {
+      this.ToastrService.success(ResponseComingFromBackend.Message);
     })
   }
 
 
+
+
 }
+
+
+
