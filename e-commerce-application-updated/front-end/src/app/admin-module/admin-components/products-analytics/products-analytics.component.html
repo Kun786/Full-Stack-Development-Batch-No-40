@@ -1,0 +1,51 @@
+<div class="container my-5">
+<h1>Welcome To Products Analytics</h1>
+<table class="table table-hover table-sm table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Product Name</th>
+        <th class="text-center">Prduct Image</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Company Name</th>
+        <th colspan="2" class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of productArray; let i=index">
+        <th class="text-center">{{i+1}}</th>
+        <td class="text-center">{{data.productName}}</td>
+        <td class="text-center"><img [src]="Url+data.imageDetaisl[0].ImageUrl" [alt]="data.productName" class="rounded-circle"></td>
+        <td class="text-center">{{data.price}}</td>
+        <td class="text-center">{{data.status}}</td>
+        <td class="text-center">{{data.companyName}}</td>
+        <td class="text-center"><i class="fas fa-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getParticularData(data._id)"></i></td>
+        <td class="text-center"><button class="btn btn-outline-danger">delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

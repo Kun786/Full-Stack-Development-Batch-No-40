@@ -1,3 +1,4 @@
+import { ProductsAnalyticsComponent } from './admin-components/products-analytics/products-analytics.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './admin-components/dashboard/dashboard.component';
@@ -10,6 +11,7 @@ const routes: Routes = [{
     { path:'', component:DashboardComponent },
     { path:'dash-board', component:DashboardComponent },
     { path:'products', component:ProductsComponent },
+    { path:'products-analytics', component:ProductsAnalyticsComponent }
   ]
  }];
 

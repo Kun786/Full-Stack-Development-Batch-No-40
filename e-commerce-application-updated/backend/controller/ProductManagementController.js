@@ -87,9 +87,32 @@ const DeleteProductData = async (req, res) => {
         })
     }
 }
+
+const GetProductById = async (req, res) => {
+    try {
+        const Id = req.params._id;
+        const docToFind = await ProductModel.findOne(
+            { _id:Id },
+            { status:1 }
+        )
+        res.json({
+            Message:'Data Found Successfuly',
+            Data:true,
+            Result:docToFind
+        })
+    } catch (error) {
+        res.json({
+            Message: error.mesage,
+            Result: null,
+            Data: false
+        })
+    }
+}
+
 module.exports = {
     ProductData,
     GetProductData,
     UpdateMyProductData,
-    DeleteProductData
+    DeleteProductData,
+    GetProductById
 }
