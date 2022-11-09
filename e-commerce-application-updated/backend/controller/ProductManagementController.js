@@ -71,11 +71,18 @@ const UpdateMyProductData = async (req, res) => {
     }
 }
 
-const DeleteProductData = async (req, res) => {
+const DeleteProductById = async (req, res) => {
     try {
-        const DocToDelete = await ProductModel.deleteMany({ Status: 1 });
+        const Id = req.params._id;
+        const DocToDelete = await ProductModel.updateOne(
+            { _id:Id },
+            { $set:{softDeleteStatus:1} }
+            );
+            // const docToDelete = await ProductModel.deleteOne(
+            //     { _id:Id }
+            // )
         res.json({
-            Message: 'Documents has benn Updated',
+            Message: 'Document Deleted Successfuly',
             Data: true,
             Result: DocToDelete
         })
@@ -93,7 +100,7 @@ const GetProductById = async (req, res) => {
         const Id = req.params._id;
         const docToFind = await ProductModel.findOne(
             { _id:Id },
-            { status:1 }
+            // { status:1 } Projection
         )
         res.json({
             Message:'Data Found Successfuly',
@@ -113,6 +120,6 @@ module.exports = {
     ProductData,
     GetProductData,
     UpdateMyProductData,
-    DeleteProductData,
+    DeleteProductById,
     GetProductById
 }

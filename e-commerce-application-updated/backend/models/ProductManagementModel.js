@@ -19,6 +19,7 @@ const ProductSchema = mongoose.Schema({
     size:[],
     description:{ type:String, required:true },
     status: { type: Number, default: 1 },
+    softDeleteStatus: { type: Number, default: 0},
     category: { type:String, required:true},
     imageDetaisl: [
         {

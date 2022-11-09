@@ -20,4 +20,8 @@ export class ProductService {
   GetProductById(_id:any){
     return this.HttpClient.get(`http://localhost:8888/ProductManagement/GetProductById/${_id}`)
   }
+
+  DeleteProductById(_id:any){
+    return this.HttpClient.delete(`http://localhost:8888/ProductManagement/DeleteProductById/${_id}`);
+  }
 }
