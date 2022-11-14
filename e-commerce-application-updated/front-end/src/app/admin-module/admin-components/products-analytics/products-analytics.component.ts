@@ -41,4 +41,11 @@ export class ProductsAnalyticsComponent implements OnInit {
     })
   }
 
+  hardDeleteProduct(_id:any){
+    this._ProductService.HardDeleteProductById(_id).subscribe(res => {
+      res;
+      //add toastr
+    })
+  }
+
 }

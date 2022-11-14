@@ -24,4 +24,8 @@ export class ProductService {
   DeleteProductById(_id:any){
     return this.HttpClient.delete(`http://localhost:8888/ProductManagement/DeleteProductById/${_id}`);
   }
+
+  HardDeleteProductById(_id:any){
+    return this.HttpClient.delete(`http://localhost:8888/ProductManagement/HardDelete/${_id}`)
+  }
 }

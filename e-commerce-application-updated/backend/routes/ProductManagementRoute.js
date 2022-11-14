@@ -8,7 +8,8 @@ const {
     GetProductData,
     UpdateMyProductData,
     DeleteProductById,
-    GetProductById
+    GetProductById,
+    HardDelete
  } = require('../controller/ProductManagementController');
 
 
@@ -23,5 +24,6 @@ Router.get('/GetProductData',GetProductData);
 Router.post('/UpdateMyProductData',UpdateMyProductData);
 Router.delete('/DeleteProductById/:_id',DeleteProductById);
 Router.get('/GetProductById/:_id',GetProductById)
+Router.delete('/HardDelete/:_id',HardDelete)
 
 module.exports = Router;

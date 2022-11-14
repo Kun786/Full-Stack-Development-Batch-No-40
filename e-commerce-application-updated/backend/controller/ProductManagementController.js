@@ -1,4 +1,5 @@
-const ProductModel = require('../models/ProductManagementModel')
+const ProductModel = require('../models/ProductManagementModel');
+const fs = require('fs');
 
 const ProductData = async (req, res) => {
     try {
@@ -95,6 +96,41 @@ const DeleteProductById = async (req, res) => {
     }
 }
 
+const HardDelete = async (req, res) => {
+    try {
+        const Id = req.params._id;
+        const docToget = await ProductModel.findOne({_id:Id}).lean();
+       
+        if(!!docToget){
+            const docToDelete = await ProductModel.deleteOne({
+                _id:docToget._id
+            })
+            docToget.imageDetaisl.forEach(pathOfFiles => {
+                fs.unlinkSync(`${pathOfFiles.ImageUrl}`);
+            })
+            fs.rmdirSync(`../assets/Product/${docToget.productName}`);
+            res.json({
+                Message:'Deleted',
+                Data:true,
+                Result:docToDelete
+            })
+        }else{
+            res.json({
+                Message:'Not Deleted',
+                Data:true,
+                Result:null
+            })
+        }
+    } catch (error) {
+        error
+        res.json({
+            Message: error,
+            Result: null,
+            Data: false
+        })
+    }
+}
+
 const GetProductById = async (req, res) => {
     try {
         const Id = req.params._id;
@@ -121,5 +157,6 @@ module.exports = {
     GetProductData,
     UpdateMyProductData,
     DeleteProductById,
-    GetProductById
+    GetProductById,
+    HardDelete
 }
