@@ -9,7 +9,8 @@ const {
     UpdateMyProductData,
     DeleteProductById,
     GetProductById,
-    HardDelete
+    HardDelete,
+    UpdateById
  } = require('../controller/ProductManagementController');
 
 
@@ -25,5 +26,6 @@ Router.post('/UpdateMyProductData',UpdateMyProductData);
 Router.delete('/DeleteProductById/:_id',DeleteProductById);
 Router.get('/GetProductById/:_id',GetProductById)
 Router.delete('/HardDelete/:_id',HardDelete)
+Router.post('/UpdateById',UpdateById);
 
 module.exports = Router;

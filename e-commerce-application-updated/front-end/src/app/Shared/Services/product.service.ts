@@ -28,4 +28,8 @@ export class ProductService {
   HardDeleteProductById(_id:any){
     return this.HttpClient.delete(`http://localhost:8888/ProductManagement/HardDelete/${_id}`)
   }
+
+  UpdateById(payLoad:any){
+    return this.HttpClient.post(`http://localhost:8888/ProductManagement/UpdateById`,payLoad);
+  }
 }

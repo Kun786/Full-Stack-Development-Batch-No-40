@@ -122,7 +122,28 @@ const HardDelete = async (req, res) => {
             })
         }
     } catch (error) {
-        error
+        res.json({
+            Message: error,
+            Result: null,
+            Data: false
+        })
+    }
+}
+
+const UpdateById = async (req, res) => {
+    try {
+        const Id =  req.body._id;
+        const payLoad = req.body;
+        const docToUpdate = await ProductModel.updateOne(
+            {_id:Id},
+            payLoad
+            )
+            res.json({
+                Message:'Updated Successfuly',
+                Data:true,
+                Result:docToUpdate
+            })
+    } catch (error) {
         res.json({
             Message: error,
             Result: null,
@@ -158,5 +179,6 @@ module.exports = {
     UpdateMyProductData,
     DeleteProductById,
     GetProductById,
-    HardDelete
+    HardDelete,
+    UpdateById
 }
