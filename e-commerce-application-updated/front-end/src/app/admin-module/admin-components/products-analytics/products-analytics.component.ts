@@ -1,5 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { ProductService } from 'src/app/Shared/Services/product.service';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 
@@ -14,6 +14,8 @@ export class ProductsAnalyticsComponent implements OnInit {
   particularProductData:any = {};
   updateProductForm:any | FormGroup;
   makeIdPublic:any;
+  toggleValue:boolean = false;
+  imageDetails:any;
   constructor(private _ProductService:ProductService, private _ToastrService:ToastrService, private _Formbuilder:FormBuilder) { 
     this.updateProductFormModel();
   }
@@ -77,7 +79,19 @@ export class ProductsAnalyticsComponent implements OnInit {
     })
   }
 
- 
+  toggle(){
+    this.toggleValue = !this.toggleValue;
+  }
+
+  getImage(event:any){
+    this.imageDetails = event.target.files[0];
+  }
+
+  UpdateImage(productId:any, oldImageDetails:any){
+    let payLoad = {id:productId, newImageDetails:this.imageDetails, oldImageDetails:oldImageDetails};
+    payLoad;
+  }
+
   Update(){
     let payLoad = this.updateProductForm.value;
     payLoad['_id'] = this.makeIdPublic;

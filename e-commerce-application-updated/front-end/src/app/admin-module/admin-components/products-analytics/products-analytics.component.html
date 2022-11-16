@@ -1,5 +1,9 @@
-<div class="container my-5">
-  <h1>Welcome To Products Analytics</h1>
+
+<div class="container d-flex justify-content-end my-5">
+  <button class="btn btn-outline-success" [ngClass]="toggleValue ? '' : 'btn-outline-info' " (click)="toggle()">{{toggleValue ? 'Toggle List View':'Toggle Grid View'}}</button>
+</div>
+<h1 class="text-center">Welcome To Products Analytics</h1>
+<div class="container my-5" *ngIf="!toggleValue">
   <table class="table table-hover table-sm table-striped">
     <thead>
       <tr>
@@ -18,11 +22,10 @@
         <th class="text-center">{{i+1}}</th>
         <td class="text-center">{{data.productName}}</td>
         <td class="text-center"><img [src]="Url+data.imageDetaisl[0].ImageUrl" [alt]="data.productName"
-            class="rounded-circle"></td>
+            class="rounded-circle image"></td>
         <td class="text-center">{{data.price}}</td>
         <td class="text-center" [ngClass]="data.status === 1 ? 'text-primary' : 'text-danger'">{{data.status}}</td>
-        <td class="text-center" [ngClass]="data.status === 1 ? 'text-primary' : 'text-danger'">{{data.status === 1 ? 'In
-          Stock':'Out of Stock'}}</td>
+        <td class="text-center" [ngClass]="data.status === 1 ? 'text-primary' : 'text-danger'">{{data.status === 1 ? 'InStock':'Out of Stock'}}</td>
         <td class="text-center">{{data.companyName}}</td>
         <td class="text-center"><i class="fas fa-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
             (click)="getParticularData(data._id)"></i></td>
@@ -38,7 +41,28 @@
 </div>
 
 
-
+<div class="container" *ngIf="toggleValue">
+  <div class="row">
+    <div class="col" *ngFor="let data of productArray">
+      <div class="card" style="width: 18rem;">
+        <img [src]="Url+data.imageDetaisl[0].ImageUrl" [alt]="data.productName" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{data.productName}}</h5>
+          <p class="card-text">{{data.description}}</p>
+        </div>
+        <div class="card-body d-flex justify-content-between">
+          <p><i class="fas fa-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="getParticularData(data._id)"></i></p>
+            <p>
+              <i class="fas fa-pencil-alt text-warning" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+            (click)="getParticularData(data._id)"></i>
+            </p>
+            <p><i class="fa-solid fa-trash-can text-danger" (click)="deleteProduct(data._id)"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Modal -->
@@ -98,7 +122,7 @@
     <div class="modal-content">
       <form [formGroup]="updateProductForm" (ngSubmit)="Update()">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel1">Update</h5>
+        <h5 class="modal-title" id="exampleModalLabel1">Lets Edit Our Product</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -121,6 +145,24 @@
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Color</label>
             <input type="text" class="form-control" formControlName="color">
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col" *ngFor="let data of particularProductData?.imageDetaisl; let i=index;">
+                <div class="card" style="width: 18rem;">
+                  <img [src]="Url+data.ImageUrl" class="img-fluid h-25" [alt]="data.productName">
+                  <div class="card-body">
+                    <ng-container >
+                        <div class="mb-3">
+                          <label for="formFile" class="form-label">Upload Image</label>
+                          <input class="form-control" type="file" id="formFile" (change)="getImage($event)">
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="UpdateImage(particularProductData._id,data)">Update Image</button>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
       </div>
       <div class="modal-footer">

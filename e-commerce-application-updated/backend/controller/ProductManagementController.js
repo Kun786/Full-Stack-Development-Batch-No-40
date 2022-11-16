@@ -152,6 +152,14 @@ const UpdateById = async (req, res) => {
     }
 }
 
+const updateProductImageById = async (req, res) => {
+    const {id,newImageDetails,oldImageDetails} = req.body;
+    const docToGet = await ProductModel.findOne({_id:id});
+    //oldImageDetails ko delete from db and fs.unlink
+    //newImageDetails ko add karo imageDetails ke array then multer use kar k assets main sgtore karo
+
+}
+
 const GetProductById = async (req, res) => {
     try {
         const Id = req.params._id;

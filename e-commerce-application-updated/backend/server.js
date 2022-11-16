@@ -4,7 +4,6 @@ const cors = require('cors');
 const path = require('path');
 const ApplicationConfiguration = require('./configuration/ApplicationCOnfiguration');
 const ResponseOfMyDataBase = require('./configuration/DataBaseConfiguration');
-
 //Block End Dependencies
 
 
@@ -38,11 +37,13 @@ app.all('*', (req, res, next) => {
 const _ProductManagementRoute = require('./routes/ProductManagementRoute');
 const _AdminManagementRoute = require('./routes/AdminManagementRoute');
 const _PaymentManagement = require('./routes/PaymentManagementRoute');
+const _UserManagementRoute =  require('./routes/UserManagementRoute');
 
 //*****UsingRoutes*****//
 app.use('/ProductManagement', _ProductManagementRoute);
 app.use('/AdminManagement', _AdminManagementRoute);
 app.use('/PaymentManagement', _PaymentManagement);
+app.use('/userManagement',_UserManagementRoute);
 //*****UsingRoutes*****//
 
 
@@ -76,8 +77,10 @@ app.use((error, req, res, next) => {
 //Start Block For Listening Your App On Defined Port
 app.listen(PORT, () => {
     console.log(`You Application has Launched from the Port 🚀 🚀 ${PORT}`);
-    console.log(process.env.STRIPE_DEVELOPMENT_KEY);
+    let checkUserExistence = {}
 })
+
+
 
 
 //End Block For Listening Your App On Defined Port
