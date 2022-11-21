@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/Shared/Services/product.service';
@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/Shared/Services/product.service';
 
 export class ProductsComponent implements OnInit {
   @ViewChild('FileSelect') FileSelect: ElementRef | any;
+  @ViewChildren('checkBoxes') checkBoxes: QueryList<ElementRef> | undefined;
 
   color = ["Red", "Black", "Blue", 'Olive'];
   categories = ["Cap", "Hoodies", "Watch", "Bags"];
@@ -106,13 +107,19 @@ export class ProductsComponent implements OnInit {
       MultiPartFormData.append('images', ImagesData);//Appending values to the getData varibale from FormGroup
     })
 
-
-
-
+    // let formValue2 = this.myProductForm.value; Yahan say hum nay iss ko khud say array main loop kar k us ska formcontrols ko reset karain gay 
+    //kyun k this.myProductFrom.rest() sirf form controls ko reset hai 
+    
     this.ProductService.CreateProductCard(MultiPartFormData).subscribe((ResponseComingFromBackend: any) => {
       this.ToastrService.success(ResponseComingFromBackend.Message);
       this.myProductForm.reset();
+      //Yahan tum loop lagay this.myProductForm.get('size').forEach(elements => { yahan search karo array ko refrash karna hai })
       this.FileSelect.nativeElement.value = null;
+      this.imageArray = [];
+      this.newSizeArray = [];
+      this.checkBoxes?.forEach((element) => {
+        element.nativeElement.checked = false;
+      })
     })
   }
 
