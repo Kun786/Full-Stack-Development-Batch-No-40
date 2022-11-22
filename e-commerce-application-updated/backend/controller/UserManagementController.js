@@ -53,7 +53,10 @@ const userRegister = async (req, res) => {
 const userLogin = async (req, res) =>{
     try {
         const { email, password } = req.body;
-        const  checkUserExistence = await userManagementModel.findOne({email:email});
+        const  checkUserExistence = await userManagementModel.findOne(
+            {email:email},
+            ).lean();
+            checkUserExistence;
         if(Object.keys(checkUserExistence).length === 0){
             return res.json({
                 Message:'Authentication Failed Either Incorrect Password or Email',
@@ -77,12 +80,15 @@ const userLogin = async (req, res) =>{
             { expiresIn: '15m' }
         )
         
+        // delete checkUserExistence['passwrod'];
         res.json({
             Message:'Authenticate Successfuly',
             Data:true,
-            Result:token
+            Token:token,
+            UserPrivilege:checkUserExistence.userPrivilege
         })
     } catch (error) {
+        console.log(error)
         res.json({
             Error: error.message,
             Data: false,

@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +14,9 @@ import { SignUpComponent } from './management-components/sign-up/sign-up.compone
   ],
   imports: [
     CommonModule,
-    ManagementModuleRoutingModule
+    ManagementModuleRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ManagementModuleModule { }

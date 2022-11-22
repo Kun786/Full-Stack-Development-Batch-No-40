@@ -33,7 +33,7 @@ userRegisterSchema.pre('save', async function(next){
         const genSalt = await bcrypt.genSalt(saltRounds);
         const hashedPassword = await bcrypt.hash(this.password,genSalt);
         this.password = hashedPassword;
-        this.saltRounds = genSalt;
+        this.saltString = genSalt;
         next();
     } catch (error) {
        return ({
