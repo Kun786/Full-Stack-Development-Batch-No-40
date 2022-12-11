@@ -1,3 +1,4 @@
+import { ViewProductComponent } from './main-components/view-product/view-product.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './main-components/about-us/about-us.component';
@@ -8,7 +9,6 @@ import { HomeComponent } from './main-components/home/home.component';
 import { ProductsComponent } from './main-components/products/products.component';
 import { PurcahseFailedComponent } from './main-components/purcahse-failed/purcahse-failed.component';
 import { PurcahseSuccessfulComponent } from './main-components/purcahse-successful/purcahse-successful.component';
-import { ViewProductComponent } from './main-components/view-product/view-product.component';
 import { MainModuleComponent } from './main-module.component';
 
 const routes: Routes = [{ 
@@ -18,12 +18,12 @@ const routes: Routes = [{
     { path:'home', component:HomeComponent },
     { path:'product', component:ProductsComponent },
     { path:'about-us', component:AboutUsComponent },
-    { path:'view-product', component:ViewProductComponent },
     { path:'check-out', component:CheckOutComponent },
     { path:'edit-cart', component:EditCartComponent },
     { path:'contact-us', component:ContactUsComponent },
     { path:'purchase-successful', component:PurcahseSuccessfulComponent },
-    { path:'purchase-failed', component:PurcahseFailedComponent }
+    { path:'purchase-failed', component:PurcahseFailedComponent },
+    { path:'view-product/:Id', component:ViewProductComponent}
   ]
  }];
 
