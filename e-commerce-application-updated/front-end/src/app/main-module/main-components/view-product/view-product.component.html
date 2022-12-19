@@ -1,2 +1,17 @@
-<p>view-product works!</p>
-<h1>{{productObject?.productName}}</h1>
+<div class="container my-5">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <div>
+                <div *ngFor="let data of productObject.imageDetaisl">
+                    <img [src]="url+data?.ImageUrl" alt="" class="img-fluid">
+                </div>
+            </div>
+
+        </div>
+        <div class="col d-flex justify-content-center">
+            <div>
+                Controls
+            </div>
+        </div>
+    </div>
+</div>

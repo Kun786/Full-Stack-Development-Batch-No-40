@@ -10,7 +10,7 @@ import { MessengerService } from 'src/app/Shared/Services/messenger.service';
 })
 export class ViewProductComponent implements OnInit {
   public productObject : ProductInterface | any = {};
-
+  public url : string | any = 'http://localhost:8888/'
   constructor(
     private readonly ActivatedRoute:ActivatedRoute,
     private readonly ProductService:ProductService,
