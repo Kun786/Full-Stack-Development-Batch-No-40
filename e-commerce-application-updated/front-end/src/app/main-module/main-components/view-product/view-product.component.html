@@ -10,8 +10,42 @@
         </div>
         <div class="col d-flex justify-content-center">
             <div>
-                Controls
+                <h1>{{productObject.companyName}}</h1>
+                <h3>{{productObject.price | currency:'CAD':'code'}}</h3>
+                <h3>Please Select Size</h3>
+                <div class="cat action" *ngFor="let data of productObject.size">
+                    <label>
+                        <input type="checkbox" [value]="data" (click)="getSizes($event)"><span>{{data}}</span>
+                    </label>
+                </div>
+                <p class="h3">Available Colors : {{productObject.color}}</p><br>
+                <p class="h3">Quantity in Stock : <span class="stock">{{productObject.quantity}}</span></p>
+                <div>
+                    <button class="btn btn-outline-success mx-3" (click)="decrementQuantity()">-</button>
+                    <button class="btn btn-outline-success mx-3">{{selectedQuantity}}</button>
+                    <button class="btn btn-outline-success mx-3"(click)="incrementQuantity()">+</button>
+                </div>
+                <br>
+                <button class="btn btn-outline-dark">{{enumButtonText['Add To Cart']}}</button><br>
+                <button class="btn btn-outline-dark">{{enumButtonText['View Cart']}}</button><br>
+                <button class="btn btn-outline-dark">{{enumButtonText['Continue Shopping']}}</button><br>
+                <button class="btn btn-outline-dark">{{enumButtonText['Go To Home']}}</button><br>
             </div>
         </div>
     </div>
-</div>
+
+
+
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+        aria-controls="offcanvasScrolling">Enable body scrolling</button>
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+    </div>

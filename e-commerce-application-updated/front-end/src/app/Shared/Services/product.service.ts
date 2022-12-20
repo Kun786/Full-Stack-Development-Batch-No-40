@@ -10,7 +10,7 @@ export class ProductService {
   constructor(private HttpClient:HttpClient) { }
 
   CreateProductCard(Payload:any){
-    return this.HttpClient.post('http://localhost:8888/ProductManagement/ProductData',Payload);
+    return this.HttpClient.post('http://localhost:8888/ProductManagement/ProductData',Payload)
   }
 
   GetAllProducts(){
