@@ -4,6 +4,11 @@
   color: black !important;
 }
 
+.img-thumbnail{
+  height: 100px;
+  width: 100px;
+}
+
 .cat{
     margin: 4px;
     background-color: transparent;
