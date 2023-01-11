@@ -17,6 +17,6 @@ const sendEmailAgent = async(req, res) => {
 }
 
 
-modeule.exports = {
+module.exports = {
     sendEmailAgent
 }
