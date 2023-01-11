@@ -14,6 +14,7 @@ import { PurcahseSuccessfulComponent } from './main-components/purcahse-successf
 import { PurcahseFailedComponent } from './main-components/purcahse-failed/purcahse-failed.component';
 import { HomeComponent } from './main-components/home/home.component';
 import { ViewProductComponent } from './main-components/view-product/view-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { ViewProductComponent } from './main-components/view-product/view-produc
   imports: [
     CommonModule,
     MainModuleRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class MainModuleModule { }

@@ -38,12 +38,14 @@ const _ProductManagementRoute = require('./routes/ProductManagementRoute');
 const _AdminManagementRoute = require('./routes/AdminManagementRoute');
 const _PaymentManagement = require('./routes/PaymentManagementRoute');
 const _UserManagementRoute =  require('./routes/UserManagementRoute');
+const _EmailService =   require('./routes/emailServiceManagementRoute')
 
 //*****UsingRoutes*****//
 app.use('/ProductManagement', _ProductManagementRoute);
 app.use('/AdminManagement', _AdminManagementRoute);
 app.use('/PaymentManagement', _PaymentManagement);
 app.use('/userManagement',_UserManagementRoute);
+app.use('/emailService',_EmailService)
 //*****UsingRoutes*****//
 
 

@@ -1,1 +1,21 @@
 <p>home works!</p>
+
+<div class="mx-5 my-5">
+    <form class="row g-3 needs-validation" [formGroup]="emailForm" (ngSubmit)="sendForm()">
+        <div class="col-md-4">
+          <label class="form-label">First name</label>
+          <input type="text" class="form-control" formControlName="firstName">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="message"></textarea>
+          </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+</div>
