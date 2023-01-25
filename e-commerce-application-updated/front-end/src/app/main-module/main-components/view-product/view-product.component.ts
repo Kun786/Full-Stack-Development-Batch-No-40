@@ -84,6 +84,27 @@ export class ViewProductComponent implements OnInit {
   //   processedCartArray.push(processedCartObject);
   //   this.LocalStorageManagementService.addToCart(processedCartArray);
   // }
+
+  // ChatSonic
+  // addToCart() {
+  //   if (this.selectedSizes.length <= 0) {
+  //     this.ToastrService.error('Please Select the Size before you proceeed to cart')
+  //   } else {
+  //     let { _id, category, color, companyName, description, price, productName, quantity } = this.productObject;
+  //     let processedCartObject = {
+  //       productId: _id,
+  //       imageUrl: this.productObject?.imageDetaisl[0]?.ImageUrl,
+  //       selectedSizes: this.selectedSizes,
+  //       selectedQuantity: this.selectedQuantity,
+  //       category, color, companyName, description, price, productName, quantity
+  //     }
+  
+  //     let processedCartArray = this.LocalStorageManagementService.getCartFromLocalStorage() ?? [];
+  //     processedCartArray.push(processedCartObject);
+  //     this.LocalStorageManagementService.addToCart(processedCartArray);
+  //     this.getCart();
+  //   }
+  // }
   //Chat GPT say refractor kia hai ye
 
   //Without Refgractor
